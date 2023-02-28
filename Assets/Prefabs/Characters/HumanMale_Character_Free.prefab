@@ -2667,7 +2667,7 @@ Animator:
   m_GameObject: {fileID: 3267370064572050364}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 2255221d850daf642981c1a4eedf85a1, type: 3}
-  m_Controller: {fileID: 9100000, guid: ef6403663453e6a4cb106814a81e72b4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 392d33fad7d026b45bd39e33a182be53, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2697,6 +2697,25 @@ MonoBehaviour:
   freeLookMovementSpeed: 12.5
   targetingMovementSpeed: 10
   rotationDamping: 12.5
+  attacks:
+  - animationName: Attack1
+    transitionDuration: 0.1
+    comboStateIndex: 1
+    comboAttackTime: 0.5
+    forceTime: 0.14
+    force: 15
+  - animationName: Attack2
+    transitionDuration: 0.1
+    comboStateIndex: 2
+    comboAttackTime: 0.4
+    forceTime: 0.2
+    force: 15
+  - animationName: Attack3
+    transitionDuration: 0.1
+    comboStateIndex: -1
+    comboAttackTime: 0.5
+    forceTime: 0.2
+    force: 20
 --- !u!114 &2824282947044939051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2722,6 +2741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 303322497011707972}
+  drag: 0.1
 --- !u!143 &303322497011707972
 CharacterController:
   m_ObjectHideFlags: 0

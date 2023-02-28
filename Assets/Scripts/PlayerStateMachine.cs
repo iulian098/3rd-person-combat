@@ -12,6 +12,7 @@ public class PlayerStateMachine : StateMachine
     [SerializeField] float freeLookMovementSpeed;
     [SerializeField] float targetingMovementSpeed;
     [SerializeField] float rotationDamping;
+    [SerializeField] Attack[] attacks;
     Transform cameraTransform;
 
     public InputReader InputReader => inputReader;
@@ -22,7 +23,9 @@ public class PlayerStateMachine : StateMachine
     public float FreeLookMovementSpeed => freeLookMovementSpeed;
     public float TargetingMovementSpeed => targetingMovementSpeed;
     public float RotationDamping => rotationDamping;
+    public Attack[] Attacks => attacks;
     public Transform CameraTransform => cameraTransform;
+
 
     private void Start() {
         cameraTransform = Camera.main.transform;

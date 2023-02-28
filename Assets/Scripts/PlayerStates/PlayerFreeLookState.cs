@@ -21,6 +21,12 @@ public class PlayerFreeLookState : PlayerBaseState {
 
 
     public override void OnTick(float deltaTime) {
+
+        if (stateMachine.InputReader.IsAttacking) {
+            stateMachine.SwitchState(new PlayerAttackingState(stateMachine, 0));
+            return;
+        }
+
         movementVector = CalculateMovement();
 
         Move(movementVector * stateMachine.FreeLookMovementSpeed, deltaTime);

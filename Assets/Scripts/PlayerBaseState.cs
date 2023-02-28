@@ -14,6 +14,10 @@ public abstract class PlayerBaseState : State
         stateMachine.CharacterController.Move((motion + stateMachine.ForceReceiver.Movement) * deltaTime);
     }
 
+    protected void Move(float deltaTime) {
+        Move(Vector3.zero, deltaTime);
+    }
+
     protected void FaceTarget() {
         if (stateMachine.Targeter.CurrentTarget == null) return;
 

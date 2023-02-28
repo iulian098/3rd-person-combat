@@ -6,13 +6,15 @@ using UnityEngine.InputSystem;
 
 public class InputReader : MonoBehaviour, PlayerControls.IPlayerActions
 {
-    public PlayerControls playerControls;
 
     public Vector2 MovementVector { get; private set; }
+    public bool IsAttacking { get; private set; }
 
     public Action onJump;
     public Action onAttack;
     public Action onTarget;
+
+    private PlayerControls playerControls;
 
     private void Start() {
         playerControls = new PlayerControls();
@@ -22,9 +24,10 @@ public class InputReader : MonoBehaviour, PlayerControls.IPlayerActions
     }
 
     public void OnAttack(InputAction.CallbackContext context) {
-        if (!context.performed) return;
 
-        onAttack?.Invoke();
+        if (context.performed) IsAttacking = true;
+        else if (context.canceled) IsAttacking = false;
+
     }
 
     public void OnJump(InputAction.CallbackContext context) {
