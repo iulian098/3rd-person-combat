@@ -201,8 +201,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.0061973725, y: -0.00000067170095, z: 0.0000000041628594,
-    w: 0.99998087}
+  m_LocalRotation: {x: 0.0061973725, y: -0.00000067169304, z: 0.000000004162811, w: 0.99998087}
   m_LocalPosition: {x: 0, y: 1.5, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -484,6 +483,7 @@ GameObject:
   - component: {fileID: 454801263}
   - component: {fileID: 454801262}
   - component: {fileID: 454801266}
+  - component: {fileID: 454801267}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Enemy
@@ -581,6 +581,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a92b1526ea61fb42a329879780a877b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &454801267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454801261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf1c3d5f03716d24682e4b550284b48e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+--- !u!143 &581564162 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 3069701194447146680, guid: 9bbb62ea8bd67cc4aabf55e8991f638c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4537826824404870175}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,6 +662,7 @@ GameObject:
   - component: {fileID: 912968535}
   - component: {fileID: 912968534}
   - component: {fileID: 912968538}
+  - component: {fileID: 912968539}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Enemy
@@ -740,6 +760,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a92b1526ea61fb42a329879780a877b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &912968539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912968533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf1c3d5f03716d24682e4b550284b48e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &1143206685
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,33 +861,38 @@ PrefabInstance:
     - target: {fileID: 4537826824379473088, guid: 9bbb62ea8bd67cc4aabf55e8991f638c,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.016999545
+      value: -0.016999543
       objectReference: {fileID: 0}
     - target: {fileID: 4537826824379473088, guid: 9bbb62ea8bd67cc4aabf55e8991f638c,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000065443896
+      value: -0.000000619964
       objectReference: {fileID: 0}
     - target: {fileID: 4537826824379473088, guid: 9bbb62ea8bd67cc4aabf55e8991f638c,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000011126772
+      value: -0.000000010540629
       objectReference: {fileID: 0}
     - target: {fileID: 4537826825030049616, guid: 9bbb62ea8bd67cc4aabf55e8991f638c,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0061973673
+      value: 0.0061973683
       objectReference: {fileID: 0}
     - target: {fileID: 4537826825030049616, guid: 9bbb62ea8bd67cc4aabf55e8991f638c,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000065447705
+      value: -0.0000006544864
       objectReference: {fileID: 0}
     - target: {fileID: 4537826825030049616, guid: 9bbb62ea8bd67cc4aabf55e8991f638c,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000004056113
+      value: 0.000000004056171
       objectReference: {fileID: 0}
+    - target: {fileID: 7092713456932568368, guid: 9bbb62ea8bd67cc4aabf55e8991f638c,
+        type: 3}
+      propertyPath: myColl
+      value: 
+      objectReference: {fileID: 581564162}
     - target: {fileID: 7184013213762813159, guid: 9bbb62ea8bd67cc4aabf55e8991f638c,
         type: 3}
       propertyPath: m_ChildCameras.Array.size

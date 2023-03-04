@@ -7,6 +7,7 @@ public class PlayerFreeLookState : PlayerBaseState {
 
     readonly int FreeLookBlendTreeHash = Animator.StringToHash("Movement");
     readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
+    const float CrossFadeDuration = 0.1f
 
     Vector3 movementVector = new Vector3();
     float dampTime = 0.1f;
@@ -16,7 +17,7 @@ public class PlayerFreeLookState : PlayerBaseState {
     public override void OnEnter() {
         stateMachine.InputReader.onTarget += OnTarget;
 
-        stateMachine.Animator.Play(FreeLookBlendTreeHash);
+        stateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, CrossFadeDuration);
     }
 
 

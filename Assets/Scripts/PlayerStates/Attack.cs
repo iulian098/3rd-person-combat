@@ -11,6 +11,7 @@ public class Attack
     [SerializeField] float comboAttackTime;
     [SerializeField] float forceTime;
     [SerializeField] float force;
+    [SerializeField] int damage;
 
     public string AnimationName => animationName;
     public float TransitionDuration => transitionDuration;
@@ -18,5 +19,6 @@ public class Attack
     public float ComboAttackTime => comboAttackTime;
     public float ForceTime => forceTime;
     public float Force => force;
+    public int Damage => damage;
 
 }

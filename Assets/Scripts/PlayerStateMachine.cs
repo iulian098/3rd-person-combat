@@ -9,6 +9,7 @@ public class PlayerStateMachine : StateMachine
     [SerializeField] Animator animator;
     [SerializeField] ForceReceiver forceReceiver;
     [SerializeField] Targeter targeter;
+    [SerializeField] Weapon weapon;
     [SerializeField] float freeLookMovementSpeed;
     [SerializeField] float targetingMovementSpeed;
     [SerializeField] float rotationDamping;
@@ -20,6 +21,7 @@ public class PlayerStateMachine : StateMachine
     public Animator Animator => animator;
     public ForceReceiver ForceReceiver => forceReceiver;
     public Targeter Targeter => targeter;
+    public Weapon Weapon => weapon;
     public float FreeLookMovementSpeed => freeLookMovementSpeed;
     public float TargetingMovementSpeed => targetingMovementSpeed;
     public float RotationDamping => rotationDamping;
