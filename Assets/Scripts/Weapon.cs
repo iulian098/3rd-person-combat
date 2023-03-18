@@ -7,15 +7,17 @@ public class Weapon : MonoBehaviour
     [SerializeField] Collider myColl;
 
     int damage;
+    float knockback;
 
     HashSet<Collider> collidedWith = new HashSet<Collider>();
 
-    private void OnEnable() {
+    public void OnEnable() {
         collidedWith.Clear();
     }
 
-    public void SetDamage(int dmg) {
-        damage = dmg;
+    public void SetDamage(int damage, float knockback) {
+        this.damage = damage;
+        this.knockback = knockback;
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -26,6 +28,8 @@ public class Weapon : MonoBehaviour
         if(other.TryGetComponent(out Health health))
             health.DealDamage(damage);
 
-        Debug.Log($"{name} health {health}");
+        if(other.TryGetComponent(out ForceReceiver forceReceiver))
+            forceReceiver.AddForce((other.transform.position - myColl.transform.position).normalized * knockback);
+        
     }
 }

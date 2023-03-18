@@ -8,11 +8,11 @@ public class Targeter : MonoBehaviour
 
     [SerializeField] CinemachineTargetGroup cinemachineTargetGroup;
 
-    List<Target> targets = new List<Target>();
+    HashSet<Target> targets = new HashSet<Target>();
     Target currentTarget;
     Camera cam;
 
-    public List<Target> Targets => targets;
+    public HashSet<Target> Targets => targets;
     public Target CurrentTarget => currentTarget;
 
     private void Start() {
@@ -36,7 +36,7 @@ public class Targeter : MonoBehaviour
         float closestTargetDistance = Mathf.Infinity;
 
         foreach (var target in targets) {
-            Vector2 viewPos = cam.WorldToScreenPoint(target.transform.position);
+            Vector2 viewPos = cam.WorldToViewportPoint(target.transform.position);
 
             if(viewPos.x < 0 || viewPos.x > 1 || viewPos.y < 0 || viewPos.y > 1) continue;
 
