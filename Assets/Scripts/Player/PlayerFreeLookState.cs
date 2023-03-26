@@ -13,14 +13,22 @@ namespace ThirdPersonCombat.Player {
 
         Vector3 movementVector = new Vector3();
         float dampTime = 0.1f;
+        bool shouldFade;
 
-        public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine) {
+        public PlayerFreeLookState(PlayerStateMachine stateMachine, bool shouldFade = true) : base(stateMachine) {
+            this.shouldFade = shouldFade;
         }
 
         public override void OnEnter() {
             stateMachine.InputReader.onTarget += OnTarget;
+            stateMachine.InputReader.onJump += OnJump;
 
-            stateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, CrossFadeDuration);
+            stateMachine.Animator.SetFloat(FreeLookSpeedHash, 0f);
+
+            if (shouldFade)
+                stateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, CrossFadeDuration);
+            else
+                stateMachine.Animator.Play(FreeLookBlendTreeHash);
         }
 
 
@@ -46,6 +54,7 @@ namespace ThirdPersonCombat.Player {
 
         public override void OnExit() {
             stateMachine.InputReader.onTarget -= OnTarget;
+            stateMachine.InputReader.onJump -= OnJump;
         }
 
         Vector3 CalculateMovement() {
@@ -73,6 +82,10 @@ namespace ThirdPersonCombat.Player {
             if (!stateMachine.Targeter.SelectTarget()) return;
 
             stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+        }
+
+        private void OnJump() {
+            stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
         }
 
     }

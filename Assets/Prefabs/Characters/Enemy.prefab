@@ -555,6 +555,7 @@ GameObject:
   - component: {fileID: 365849001105601159}
   - component: {fileID: 4428893058307342909}
   - component: {fileID: 860340791365172417}
+  - component: {fileID: 3590083545290732280}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -659,6 +660,7 @@ MonoBehaviour:
   weapon: {fileID: 2189249018237582294}
   health: {fileID: 365849001105601159}
   target: {fileID: 4214751354806717864}
+  ragdoll: {fileID: 0}
   movementSpeed: 10
   detectionRange: 7.5
   attackRange: 1.5
@@ -741,6 +743,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponCollider: {fileID: 245465337761870046}
   weapon: {fileID: 2189249018237582294}
+--- !u!114 &3590083545290732280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9222239688274973606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8cc56adcf86ae447b5dc7cf333399f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 9222239688274973605}
+  characterController: {fileID: 6239284102586435678}
 --- !u!1 &9222239688278802512
 GameObject:
   m_ObjectHideFlags: 0

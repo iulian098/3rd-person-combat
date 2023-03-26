@@ -19,7 +19,7 @@ namespace ThirdPersonCombat.Enemy {
         [SerializeField] float attackRange;
         [SerializeField] Attack[] attacks;
 
-        GameObject player;
+        Health player;
 
         public Animator Animator => animator;
         public CharacterController CharacterController => characterController;
@@ -32,7 +32,7 @@ namespace ThirdPersonCombat.Enemy {
         public float DetectionRange => detectionRange;
         public float AttackRange => attackRange;
         public Attack[] Attacks => attacks;
-        public GameObject Player => player;
+        public Health Player => player;
 
         private void OnEnable() {
             health.OnTakeDamage += OnTakeDamageHandle;
@@ -43,7 +43,7 @@ namespace ThirdPersonCombat.Enemy {
         }
 
         private void Start() {
-            player = GameObject.FindGameObjectWithTag("Player");
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
             agent.updatePosition = false;
             agent.updateRotation = false;
             SwitchState(new EnemyIdleState(this));

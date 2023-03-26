@@ -11,11 +11,17 @@ namespace ThirdPersonCombat.Player {
         [SerializeField] Weapon weapon;
         [SerializeField] Health health;
         [SerializeField] Ragdoll ragdoll;
+        [SerializeField] LedgeDetector ledgeDetector;
         [SerializeField] float freeLookMovementSpeed;
         [SerializeField] float targetingMovementSpeed;
         [SerializeField] float rotationDamping;
+        [SerializeField] float dodgeDuration;
+        [SerializeField] float dodgeLenght;
+        [SerializeField] float jumpForce;
         [SerializeField] Attack[] attacks;
+
         Transform cameraTransform;
+        float previousDodgeTime = Mathf.NegativeInfinity;
 
         public InputReader InputReader => inputReader;
         public CharacterController CharacterController => characterController;
@@ -23,10 +29,16 @@ namespace ThirdPersonCombat.Player {
         public ForceReceiver ForceReceiver => forceReceiver;
         public Targeter Targeter => targeter;
         public Weapon Weapon => weapon;
+        public Health Health => health;
         public Ragdoll Ragdoll => ragdoll;
+        public LedgeDetector LedgeDetector => ledgeDetector;
         public float FreeLookMovementSpeed => freeLookMovementSpeed;
         public float TargetingMovementSpeed => targetingMovementSpeed;
         public float RotationDamping => rotationDamping;
+        public float DodgeDuration => dodgeDuration;
+        public float DodgeLenght => dodgeLenght;
+        public float JumpForce => jumpForce;
+        public float PreviousDodgeTime { get => previousDodgeTime; set => previousDodgeTime = value; }
         public Attack[] Attacks => attacks;
         public Transform CameraTransform => cameraTransform;
 

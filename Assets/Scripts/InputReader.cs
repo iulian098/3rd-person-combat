@@ -9,8 +9,10 @@ public class InputReader : MonoBehaviour, PlayerControls.IPlayerActions
 
     public Vector2 MovementVector { get; private set; }
     public bool IsAttacking { get; private set; }
+    public bool IsBlocking { get; private set; }
 
     public Action onJump;
+    public Action onDodge;
     public Action onAttack;
     public Action onTarget;
 
@@ -44,5 +46,18 @@ public class InputReader : MonoBehaviour, PlayerControls.IPlayerActions
         if (!context.performed) return;
 
         onTarget?.Invoke();
+    }
+
+    public void OnBlock(InputAction.CallbackContext context) {
+        if (context.performed)
+            IsBlocking = true;
+        else if (context.canceled)
+            IsBlocking = false;
+    }
+
+    public void OnDodge(InputAction.CallbackContext context) {
+        if (!context.performed) return;
+
+        onDodge?.Invoke();
     }
 }

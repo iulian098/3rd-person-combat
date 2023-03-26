@@ -21,12 +21,16 @@ namespace ThirdPersonCombat.Enemy {
 
 
         protected bool IsInChaseRange() {
+            if (stateMachine.Player.IsDead) return false;
+
             float playerDist = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
 
             return playerDist <= stateMachine.DetectionRange * stateMachine.DetectionRange;
         }
 
         protected bool IsInAttackRange() {
+            if (stateMachine.Player.IsDead) return false;
+
             float playerDistanceSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
 
             return playerDistanceSqr <= stateMachine.AttackRange * stateMachine.AttackRange;

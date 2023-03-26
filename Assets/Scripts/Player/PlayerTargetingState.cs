@@ -10,7 +10,9 @@ namespace ThirdPersonCombat.Player {
         readonly int TargetingBlendTreeHash = Animator.StringToHash("TargetingBlendTree");
         readonly int TargetingForwardHash = Animator.StringToHash("TargetingForward");
         readonly int TargetingRightHash = Animator.StringToHash("TargetingRight");
+
         const float CrossFadeDuration = 0.1f;
+
         public PlayerTargetingState(PlayerStateMachine stateMachine) : base(stateMachine) {
         }
 
@@ -18,6 +20,8 @@ namespace ThirdPersonCombat.Player {
             Debug.Log("Entering Targeting State");
 
             stateMachine.InputReader.onTarget += OnCancelTarget;
+            stateMachine.InputReader.onDodge += OnDodge;
+            stateMachine.InputReader.onJump += OnJump;
 
             stateMachine.Animator.CrossFadeInFixedTime(TargetingBlendTreeHash, CrossFadeDuration);
         }
@@ -28,12 +32,17 @@ namespace ThirdPersonCombat.Player {
                 return;
             }
 
+            if (stateMachine.InputReader.IsBlocking) {
+                stateMachine.SwitchState(new PlayerBlockingState(stateMachine));
+                return;
+            }
+
             if (stateMachine.Targeter.CurrentTarget == null) {
                 stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
                 return;
             }
 
-            Vector3 movement = CalculateMovement();
+            Vector3 movement = CalculateMovement(deltaTime);
 
             Move(movement * stateMachine.TargetingMovementSpeed, deltaTime);
 
@@ -44,9 +53,10 @@ namespace ThirdPersonCombat.Player {
 
 
         public override void OnExit() {
-            Debug.Log("Exiting Targeting State");
-
             stateMachine.InputReader.onTarget -= OnCancelTarget;
+            stateMachine.InputReader.onDodge -= OnDodge;
+            stateMachine.InputReader.onJump -= OnJump;
+
         }
 
         private void OnCancelTarget() {
@@ -54,7 +64,18 @@ namespace ThirdPersonCombat.Player {
             stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
         }
 
-        private Vector3 CalculateMovement() {
+        private void OnDodge() {
+            if (stateMachine.InputReader.MovementVector == Vector2.zero)
+                stateMachine.SwitchState(new PlayerDodgingState(stateMachine, Vector2.down));
+            else
+                stateMachine.SwitchState(new PlayerDodgingState(stateMachine, stateMachine.InputReader.MovementVector));
+        }
+
+        private void OnJump() {
+            stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
+        }
+
+        private Vector3 CalculateMovement(float deltaTime) {
             Vector3 movement = new Vector3();
 
             movement += stateMachine.transform.right * stateMachine.InputReader.MovementVector.x;

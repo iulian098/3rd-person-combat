@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -34,5 +35,14 @@ public class ForceReceiver : MonoBehaviour
 
         if (agent != null)
             agent.enabled = false;
+    }
+
+    internal void Reset() {
+        impact = Vector3.zero;
+        verticalVelocity = 0;
+    }
+
+    public void Jump(float force) {
+        verticalVelocity += force;
     }
 }
