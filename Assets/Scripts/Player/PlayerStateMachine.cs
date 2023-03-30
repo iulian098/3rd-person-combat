@@ -53,6 +53,9 @@ namespace ThirdPersonCombat.Player {
         }
 
         private void Start() {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
             cameraTransform = Camera.main.transform;
             SwitchState(new PlayerFreeLookState(this));
         }

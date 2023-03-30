@@ -7,16 +7,20 @@ namespace ThirdPersonCombat.Player {
     public class PlayerPullUpState : PlayerBaseState {
 
         readonly int PullUpHash = Animator.StringToHash("PullUp");
-        readonly Vector3 Offset = new Vector3(0, 1.65f, 1.2f);
+
+        Vector3 Offset = new Vector3(0, 1.71f, 0.75f);
+
         public PlayerPullUpState(PlayerStateMachine stateMachine) : base(stateMachine) {
         }
 
         public override void OnEnter() {
             stateMachine.Animator.CrossFadeInFixedTime(PullUpHash, 0.1f);
+
         }
 
         public override void OnTick(float deltaTime) {
-            if (stateMachine.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f) return;
+
+            if (GetNormalizedTime(stateMachine.Animator, "Climbing") < 1f) return;
 
             stateMachine.CharacterController.enabled = false;
             stateMachine.transform.Translate(Offset, Space.Self);

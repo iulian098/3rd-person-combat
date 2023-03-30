@@ -3063,7 +3063,7 @@ MonoBehaviour:
     comboStateIndex: 1
     comboAttackTime: 0.5
     forceTime: 0.14
-    force: 15
+    force: 0
     damage: 10
     knockback: 0
   - animationName: Attack2
@@ -3071,7 +3071,7 @@ MonoBehaviour:
     comboStateIndex: 2
     comboAttackTime: 0.4
     forceTime: 0.2
-    force: 15
+    force: 0
     damage: 15
     knockback: 0
   - animationName: Attack3
@@ -3079,7 +3079,7 @@ MonoBehaviour:
     comboStateIndex: -1
     comboAttackTime: 0.5
     forceTime: 0.2
-    force: 20
+    force: 0
     damage: 15
     knockback: 0
 --- !u!114 &2824282947044939051
@@ -6358,7 +6358,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6618780630378476363}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.256, z: 0}
+  m_LocalPosition: {x: -0.016, y: 2.256, z: 0.092}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6376,8 +6376,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.1589222, z: 0.19855419}
-  m_Center: {x: 0, y: -0.033026695, z: 0.026421234}
+  m_Size: {x: 1, y: 0.084370136, z: 0.12764463}
+  m_Center: {x: -6.6435396e-10, y: -0.070302725, z: 0.034603246}
 --- !u!54 &970986148044937171
 Rigidbody:
   m_ObjectHideFlags: 0

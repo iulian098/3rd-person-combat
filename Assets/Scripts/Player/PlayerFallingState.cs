@@ -35,8 +35,8 @@ namespace ThirdPersonCombat.Player {
             stateMachine.LedgeDetector.OnLedgeDetected -= OnLedgeDetected;
         }
 
-        void OnLedgeDetected(Vector3 ledgeForward) {
-            stateMachine.SwitchState(new PlayerHangingState(stateMachine, ledgeForward));
+        void OnLedgeDetected(Vector3 ledgeForward, Vector3 closestPoint) {
+            stateMachine.SwitchState(new PlayerHangingState(stateMachine, ledgeForward, closestPoint));
         }
     }
 }
