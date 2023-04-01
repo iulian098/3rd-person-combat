@@ -13,6 +13,8 @@ public class Health : MonoBehaviour
     public Action OnTakeDamage;
     public Action OnDie;
 
+    public float MaxHealth => maxHealth;
+    public float CurrentHealth => health;
     public bool IsDead => health == 0;
     public bool IsInvulnerable { get { return isInvulnerable; } set { isInvulnerable = value; } }
 
